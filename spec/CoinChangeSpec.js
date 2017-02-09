@@ -15,8 +15,9 @@ describe ("coin changer", function (){
         var game = new CoinChanger (20);
         expect (game.showCoins()).toEqual ([0,0,1,0,0,0,0]);
     });
-
-
-
+    it ("should tell 1 times 20 cents of input = 20", function(){
+        var game = new CoinChanger (20);
+        expect (game.declareCoins()).toEqual ("1 times 20 cents");
+    });
 
 });
