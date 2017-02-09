@@ -1,7 +1,7 @@
 function CoinChanger(amount){
     var amount = amount;
     var coins = [100,50,20,10,5,2,1];
-    var amountOfCoins =[];
+    var amountOfCoins = [];
 
     this.showNumberOfCoins = function (){
         for (var i=0;i<coins.length;i++){
@@ -12,12 +12,13 @@ function CoinChanger(amount){
     };
 
     this.declareNumberOfCoins = function (){
+    var declareArray = [];
         for (var i=0;i<coins.length;i++){
             if(amountOfCoins[i]>0){
-                return amountOfCoins[i] + " times " + coins[i] + " cents";
+                declareArray.push(amountOfCoins[i] + " times " + coins[i] + " cents");
             }
-
         }
+        return declareArray.toString();
     }
 };
 
@@ -28,4 +29,5 @@ CoinChanger.prototype.showCoins = function (){
 CoinChanger.prototype.declareCoins = function (){
     this.showNumberOfCoins();
     return this.declareNumberOfCoins();
+
 };
