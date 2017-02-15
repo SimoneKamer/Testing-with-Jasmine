@@ -1,13 +1,15 @@
-function CoinChanger(amount){
-    var amount = amount;
-    var coins = [100,50,20,10,5,2,1];
+function CoinChanger(coins){
+    var coins = coins;
     var amountOfCoins = [];
 
-    this.showNumberOfCoins = function (){
-        for (var i=0;i<coins.length;i++){
-            amountOfCoins.push(Math.trunc(amount/(coins[i])));
-            amount = amount - (amountOfCoins[i] * coins[i]);
-        };
+    this.calculateNumberOfCoins = function (amount){
+            for (var i=0;i<coins.length;i++){
+                amountOfCoins.push(Math.trunc(amount/(coins[i])));
+                amount = amount - (amountOfCoins[i] * coins[i]);
+            };
+        }
+    this.showNumberOfCoins = function (amount){
+        this.calculateNumberOfCoins(amount);
         return amountOfCoins;
     };
 
@@ -22,12 +24,14 @@ function CoinChanger(amount){
     }
 };
 
-CoinChanger.prototype.showCoins = function (){
-    return this.showNumberOfCoins();
+CoinChanger.prototype.showCoins = function (amount){
+    var amount = amount;
+    return this.showNumberOfCoins(amount);
 };
 
-CoinChanger.prototype.declareCoins = function (){
-    this.showNumberOfCoins();
-    return this.declareNumberOfCoins();
+CoinChanger.prototype.declareCoins = function (amount){
+    var amount = amount;
+    this.showNumberOfCoins(amount);
+    return this.declareNumberOfCoins(amount);
 
 };
